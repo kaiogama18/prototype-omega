@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class PlayerOld : MonoBehaviour
 {
     private CharacterController controller;
     private Vector3 playerVelocity;
