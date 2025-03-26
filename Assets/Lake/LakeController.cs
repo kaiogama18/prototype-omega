@@ -5,28 +5,12 @@ using UnityEngine;
 
 public class LakeController : MonoBehaviour, IInteractable
 {
-    GameObject popup;
+    private Item item;
 
-    public void OnTriggerEnter(Collider other)
+    public void Interact()
     {
-        if (other.tag == "Player")
-        {
-            popup.SetActive(true);
-        }
-    }
+        //Debug.Log("Item sendo Interagido: " + gameObject.name);
 
-    public void OnTriggerExit(Collider other)
-    {
-        popup.SetActive(false);
-    }
-
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
+        Actions.OnDropItem?.Invoke(1);
     }
 }
