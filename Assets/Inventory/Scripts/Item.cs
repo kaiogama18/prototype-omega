@@ -15,4 +15,19 @@ public class Item
     public int amount;
 
     //public Sprite GetSprite()
+
+    //public Color GetColor()
+
+    public bool IsStackable()
+    {
+        switch (itemType)
+        {
+            default:
+            case ItemType.Fish:
+            case ItemType.Rock:
+                return true;
+            case ItemType.Sword:
+                return false;
+        }
+    }
 }

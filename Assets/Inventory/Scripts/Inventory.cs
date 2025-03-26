@@ -26,8 +26,29 @@ public class Inventory: MonoBehaviour
         Debug.Log("Item Dropado amount: " + item.amount);
         Debug.Log("Item Dropado itemType: " + item.itemType);
 
-        itemList.Add(item);
+        if(item.IsStackable())
+        {
+            bool itemAlreadyInInventory = false;
+            
+            foreach(Item inventoryItem in itemList)
+            {
+                if(inventoryItem.itemType == item.itemType)
+                {
+                    inventoryItem.amount += item.amount;
+                    itemAlreadyInInventory = true;
+                }
+            }
+            
+            if(!itemAlreadyInInventory)
+            {
+                itemList.Add(item);
+            }
 
+        }
+        else
+        {
+            itemList.Add(item);
+        }
         OnItemListChanged?.Invoke(this, EventArgs.Empty);
     }
 
