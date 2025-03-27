@@ -3,19 +3,62 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InventoryManager 
+public class InventoryManager : MonoBehaviour
 {
     public event EventHandler OnItemListChanged;
-    private List<Item> itemList;
+    
+    [SerializeField] private UI_Inventory uiInventory;
+    [SerializeField] private Player player;
+    [SerializeField] private float moveToPlayerDuration = .25f;
+    
+    [SerializeField, HideInInspector] private List<Item> itemList;
+    private Vector3 playerPosition; 
 
-    public InventoryManager()
+    private void Start()
     {
-        itemList = new List<Item>();
+        uiInventory.SetInventory(this);
     }
 
-    public void AddItem(Item item)
+    private void Update()
     {
+        playerPosition = player.transform.position;
+    }
 
+    private void OnEnable()
+    {
+        Actions.AddItemToInventory += AddItemToInventory; 
+    }
+
+    private void OnDisable()
+    {
+        Actions.AddItemToInventory -= AddItemToInventory;  
+    }
+   
+    public void AddItemToInventory(Item item)
+    {
+        item.itemAmount += 1;
+        StartCoroutine(MoveItemToPlayer(item));
+    }
+
+
+    IEnumerator MoveItemToPlayer(Item item)
+    {
+        Vector3 startPosition = item.transform.position;
+
+        float timeElapsed = 0f;
+
+        while (timeElapsed < moveToPlayerDuration)
+        {
+            item.transform.position = Vector3.Lerp(startPosition, new Vector3(playerPosition.x, 1f , playerPosition.z), timeElapsed / moveToPlayerDuration);
+            timeElapsed += Time.deltaTime;
+            yield return null;
+        }
+        item.transform.position = playerPosition;
+        UpdateUIInventory(item);
+    }
+
+    private void UpdateUIInventory(Item item)
+    {
         if (item.IsStackable())
         {
             bool itemAlreadyInInventory = false;
@@ -38,12 +81,21 @@ public class InventoryManager
         else
         {
             itemList.Add(item);
+
         }
         OnItemListChanged?.Invoke(this, EventArgs.Empty);
+
+        item.DestroyItem();
     }
+
+
 
     public List<Item> GetItemsList()
     {
         return itemList;
     }
+
+   
+
+
 }

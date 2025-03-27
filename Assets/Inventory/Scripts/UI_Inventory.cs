@@ -8,7 +8,7 @@ using static UnityEditor.Progress;
 
 public class UI_Inventory : MonoBehaviour
 {
-    private Inventory inventory;
+    private InventoryManager inventory;
     private Transform itemSlotContainer;
     private Transform itemSlotTemplate;
 
@@ -17,7 +17,7 @@ public class UI_Inventory : MonoBehaviour
         itemSlotContainer = transform.Find("itemSlotContanier");
         itemSlotTemplate = itemSlotContainer.Find("itemSlotTemplate");
     }
-    public void SetInventory(Inventory inventory)
+    public void SetInventory(InventoryManager inventory)
     {
         this.inventory = inventory;
 

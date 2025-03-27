@@ -16,30 +16,6 @@ public class Player : MonoBehaviour
     public float interactionRange = 3f;
     private IInteractable currentInteractable = null;
 
-    private Inventory inventory;
-
-
-    private void OnEnable()
-    {
-        Actions.AddItemOnInventory += AddItemOnInventory;
-    }
-
-    private void OnDisable()
-    {
-        Actions.AddItemOnInventory -= AddItemOnInventory;
-    }
-
-
-    private void Start()
-    {
-        #region Inventory
-
-        inventory = new Inventory();
-        uiInventory.SetInventory(inventory);
-        
-        #endregion
-    }
-
     void Update()
     {
         #region Player Movement
@@ -92,11 +68,6 @@ public class Player : MonoBehaviour
         {
             currentInteractable = null;
         }
-    }
-
-    public void AddItemOnInventory(Item item)
-    {
-        inventory.AddItem(item);
     }
 
 }

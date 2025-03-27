@@ -23,7 +23,7 @@ public class GenericManager : MonoBehaviour
         {
 
             //Debug.Log("DropItemById: " + id + " -> " + item.itemType );
-            Actions.AddItemOnInventory?.Invoke(new Item { itemType = Item.ItemType.consumable, itemAmount = 1 });
+            Actions.AddItemToInventory?.Invoke(new Item { itemType = Item.ItemType.consumable, itemAmount = 1 });
         }
     }
 }
