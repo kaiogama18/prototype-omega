@@ -1,44 +1,35 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class Inventory
+public class InventoryManager 
 {
     public event EventHandler OnItemListChanged;
-
     private List<Item> itemList;
 
-    public Inventory()
+    public InventoryManager()
     {
         itemList = new List<Item>();
-        
-        //AddItem(new Item { itemType = Item.ItemType.Fish, amount = 1 });
-        //AddItem(new Item { itemType = Item.ItemType.Rock, amount = 4 });
-        //AddItem(new Item { itemType = Item.ItemType.Sword, amount = 1 });
     }
 
     public void AddItem(Item item)
     {
-        Debug.Log("Item: [" + item.itemName + "] Adicionado com sucesso!");
-        item.itemAmount += 1;
 
         if (item.IsStackable())
         {
             bool itemAlreadyInInventory = false;
-            
-            foreach(Item inventoryItem in itemList)
+
+            foreach (Item inventoryItem in itemList)
             {
-                if(inventoryItem.itemType == item.itemType)
+                if (inventoryItem.itemType == item.itemType)
                 {
                     inventoryItem.itemAmount += item.itemAmount;
                     itemAlreadyInInventory = true;
                 }
             }
-            
-            if(!itemAlreadyInInventory)
+
+            if (!itemAlreadyInInventory)
             {
                 itemList.Add(item);
             }
@@ -55,5 +46,4 @@ public class Inventory
     {
         return itemList;
     }
-
 }

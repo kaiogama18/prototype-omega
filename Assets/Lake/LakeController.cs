@@ -1,16 +1,23 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class LakeController : MonoBehaviour, IInteractable
 {
-    private Item item;
+    //public GameObject itemDrop;
+    [SerializeField] private List<GameObject> listOfItemsToDrop;
+    [SerializeField] private float heightOffset = 1f;
+
 
     public void Interact()
     {
-        //Debug.Log("Item sendo Interagido: " + gameObject.name);
+        GameObject randomItem = listOfItemsToDrop[Random.Range(0, listOfItemsToDrop.Count)];
 
-        Actions.OnDropItem?.Invoke(1);
+
+        Vector3 newPosition = new Vector3(transform.position.x, transform.position.y + heightOffset, transform.position.z);
+        Instantiate(randomItem, newPosition, Quaternion.identity);
+
+
+
+        //Actions.OnDropItem?.Invoke(1);
     }
 }

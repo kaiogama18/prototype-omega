@@ -5,13 +5,7 @@ using static Item;
 
 public class GenericManager : MonoBehaviour
 {
-    //private Inventory inventory;
-    //[SerializeField] private Player player;
-
-    //private void Awake()
-    //{
-    //    inventory = new Inventory();
-    //}
+    //[SerializeField] private List<GameObject> propMeshes = new List<GameObject>();
 
     private void OnEnable()
     {
@@ -28,10 +22,8 @@ public class GenericManager : MonoBehaviour
         if(id == 1)
         {
 
-            //Item item = new Item { itemType = Item.ItemType.Fish, amount = 1 };
             //Debug.Log("DropItemById: " + id + " -> " + item.itemType );
-            
-            Actions.AddItemOnInventory?.Invoke(new Item { itemType = Item.ItemType.Fish, amount = 1 });
+            Actions.AddItemOnInventory?.Invoke(new Item { itemType = Item.ItemType.consumable, itemAmount = 1 });
         }
     }
 }
