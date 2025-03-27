@@ -28,7 +28,7 @@ public class UI_Inventory : MonoBehaviour
 
     private void Inventory_OnItemListChanged(object sender, System.EventArgs e)
     {
-        Debug.Log("Inventory_OnItemListChanged" );
+        //Debug.Log("Inventory_OnItemListChanged" );
         RefreshInventoryItems();
     }
 
@@ -55,9 +55,9 @@ public class UI_Inventory : MonoBehaviour
             //image.sprite = item.GetSprite();
 
             TextMeshProUGUI uiText = itemSlotRectTransform.Find("text").GetComponent<TextMeshProUGUI>();
-            if(item.amount > 1)
+            if(item.itemAmount > 1)
             {
-                uiText.SetText(item.amount.ToString());
+                uiText.SetText(item.itemAmount.ToString());
             } else
             {
                 uiText.SetText("");
