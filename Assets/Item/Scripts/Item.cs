@@ -54,18 +54,16 @@ public class Item: MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Actions.AddItemOnInventory(this);
-            Destroy(gameObject);
+            Actions.AddItemToInventory(this);
+            //Destroy(gameObject);
         }
     }
 
 
-
-
-
-
-
-
+    public void DestroyItem()
+    {
+        Destroy(gameObject);
+    }
 
     private void StartBlinking()
     {
