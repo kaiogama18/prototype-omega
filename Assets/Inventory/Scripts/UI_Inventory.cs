@@ -28,7 +28,6 @@ public class UI_Inventory : MonoBehaviour
 
     private void Inventory_OnItemListChanged(object sender, System.EventArgs e)
     {
-        //Debug.Log("Inventory_OnItemListChanged" );
         RefreshInventoryItems();
     }
 
@@ -51,13 +50,14 @@ public class UI_Inventory : MonoBehaviour
             itemSlotRectTransform.gameObject.SetActive(true);
             
             itemSlotRectTransform.anchoredPosition = new Vector2(x * itemSlotCellSize, y * itemSlotCellSize);
-            //Image image = itemSlotRectTransform.Find("iconSprite").GetComponent<Image>();
-            //image.sprite = item.GetSprite();
+
+            Image image = itemSlotRectTransform.Find("iconSprite").GetComponent<Image>();
+            image.sprite = item.GetItemSprite();
 
             TextMeshProUGUI uiText = itemSlotRectTransform.Find("text").GetComponent<TextMeshProUGUI>();
-            if(item.itemAmount > 1)
+            if (item.GetItemAmount() > 1)
             {
-                uiText.SetText(item.itemAmount.ToString());
+                uiText.SetText(item.GetItemAmount().ToString());
             } else
             {
                 uiText.SetText("");

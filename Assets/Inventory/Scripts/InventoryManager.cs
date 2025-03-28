@@ -36,7 +36,7 @@ public class InventoryManager : MonoBehaviour
    
     public void AddItemToInventory(Item item)
     {
-        item.itemAmount += 1;
+        
         StartCoroutine(MoveItemToPlayer(item));
     }
 
@@ -59,6 +59,8 @@ public class InventoryManager : MonoBehaviour
 
     private void UpdateUIInventory(Item item)
     {
+        item.SetItemAmount(1);
+        
         if (item.IsStackable())
         {
             bool itemAlreadyInInventory = false;
@@ -67,7 +69,7 @@ public class InventoryManager : MonoBehaviour
             {
                 if (inventoryItem.itemType == item.itemType)
                 {
-                    inventoryItem.itemAmount += item.itemAmount;
+                    inventoryItem.SetItemAmount(item.GetItemAmount());
                     itemAlreadyInInventory = true;
                 }
             }
@@ -76,7 +78,6 @@ public class InventoryManager : MonoBehaviour
             {
                 itemList.Add(item);
             }
-
         }
         else
         {
@@ -94,8 +95,5 @@ public class InventoryManager : MonoBehaviour
     {
         return itemList;
     }
-
-   
-
 
 }

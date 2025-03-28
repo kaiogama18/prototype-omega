@@ -24,11 +24,14 @@ public class Item: MonoBehaviour
     [SerializeField] private Sprite itemSprite;
     public ItemType itemType;
     public ItemRarity rarity;
-    public int itemAmount = 0;
+    private int itemAmount = 0;
 
-    [SerializeField] private float itemLifetime = 100f;
+    //[SerializeField] private float itemLifetime = 100f;
     private float blinkDuration = 5f;
     private bool isBlinking = false;
+
+    [SerializeField] private float rotationSpeed = 100f;
+
     public bool IsStackable()
     {
 
@@ -47,8 +50,14 @@ public class Item: MonoBehaviour
     {
         gameObject.SetActive(true);
         //Invoke("StartBlinking", itemLifetime - blinkDuration);
-        Destroy(gameObject, itemLifetime);
+        //Destroy(gameObject, itemLifetime);
     }
+
+    private void Update()
+    {
+        this.transform.Rotate(Vector3.up, (rotationSpeed * 2) * Time.deltaTime);
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -58,6 +67,8 @@ public class Item: MonoBehaviour
             //Destroy(gameObject);
         }
     }
+
+    
 
 
     public void DestroyItem()
@@ -89,4 +100,19 @@ public class Item: MonoBehaviour
         gameObject.SetActive(true);
     }
 
+
+    public Sprite GetItemSprite()
+    {
+        return itemSprite;
+    }
+
+    public int GetItemAmount()
+    {
+        return itemAmount;
+    }
+
+    public void SetItemAmount(int amount)
+    {
+        itemAmount += amount;
+    }
 }

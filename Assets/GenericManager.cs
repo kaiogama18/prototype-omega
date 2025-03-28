@@ -21,9 +21,8 @@ public class GenericManager : MonoBehaviour
     {
         if(id == 1)
         {
-
             //Debug.Log("DropItemById: " + id + " -> " + item.itemType );
-            Actions.AddItemToInventory?.Invoke(new Item { itemType = Item.ItemType.consumable, itemAmount = 1 });
+            //Actions.AddItemToInventory?.Invoke(new Item { itemType = Item.ItemType.consumable, itemAmount = 1 });
         }
     }
 }
