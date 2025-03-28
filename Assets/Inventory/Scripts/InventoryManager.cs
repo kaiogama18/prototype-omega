@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Item;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -10,13 +11,36 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private UI_Inventory uiInventory;
     [SerializeField] private Player player;
     [SerializeField] private float moveToPlayerDuration = .25f;
-    
     [SerializeField, HideInInspector] private List<Item> itemList;
+
+    [SerializeField] private int inventoryLevel = 1;
+
+    [SerializeField, HideInInspector] private int inventorySlots; 
+
+    [SerializeField] private int maxItens = 10;
     private Vector3 playerPosition; 
 
     private void Start()
     {
+        
         uiInventory.SetInventory(this);
+
+        switch(inventoryLevel)
+        {
+            default:
+            case 1:
+                inventorySlots = 6;
+                break;
+            case 2:
+                inventorySlots = 12;
+                break;
+            case 3:
+                inventorySlots = 24;
+                break;
+        }
+
+        itemList = new List<Item>(inventorySlots);
+
     }
 
     private void Update()
@@ -36,7 +60,7 @@ public class InventoryManager : MonoBehaviour
    
     public void AddItemToInventory(Item item)
     {
-        item.itemAmount += 1;
+        
         StartCoroutine(MoveItemToPlayer(item));
     }
 
@@ -59,24 +83,29 @@ public class InventoryManager : MonoBehaviour
 
     private void UpdateUIInventory(Item item)
     {
+        item.SetItemAmount(1);
+        
         if (item.IsStackable())
         {
             bool itemAlreadyInInventory = false;
 
             foreach (Item inventoryItem in itemList)
             {
-                if (inventoryItem.itemType == item.itemType)
+                if (inventoryItem.itemType == item.itemType
+                    && inventoryItem.itemName == item.itemName
+                    && inventoryItem.itemRarity == item.itemRarity 
+                    && inventoryItem.GetItemAmount() < maxItens)
                 {
-                    inventoryItem.itemAmount += item.itemAmount;
+                    inventoryItem.SetItemAmount(item.GetItemAmount());
                     itemAlreadyInInventory = true;
                 }
             }
+
 
             if (!itemAlreadyInInventory)
             {
                 itemList.Add(item);
             }
-
         }
         else
         {
@@ -95,7 +124,9 @@ public class InventoryManager : MonoBehaviour
         return itemList;
     }
 
-   
-
+    public int GetInventorySlots()
+    {
+        return inventorySlots;
+    }
 
 }
