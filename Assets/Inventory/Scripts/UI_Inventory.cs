@@ -23,15 +23,15 @@ public class UI_Inventory : MonoBehaviour
 
         inventory.OnItemListChanged += Inventory_OnItemListChanged;
         
-        RefreshInventoryItems();
+        RefreshInventoryUI();
     }
 
     private void Inventory_OnItemListChanged(object sender, System.EventArgs e)
     {
-        RefreshInventoryItems();
+        RefreshInventoryUI();
     }
 
-    private void RefreshInventoryItems()
+    private void RefreshInventoryUI()
     {
 
         foreach(Transform child in itemSlotContainer)
@@ -42,13 +42,15 @@ public class UI_Inventory : MonoBehaviour
 
         int x = 0;
         int y = 0;
-        float itemSlotCellSize = 75f;
+        float itemSlotCellSize = inventory.GetInventorySlots();
 
         foreach(Item item in inventory.GetItemsList())
         {
+            AddItemToInventoryUI(item, itemSlotCellSize, x, y);
+
             RectTransform itemSlotRectTransform = Instantiate(itemSlotTemplate, itemSlotContainer).GetComponent<RectTransform>();
             itemSlotRectTransform.gameObject.SetActive(true);
-            
+
             itemSlotRectTransform.anchoredPosition = new Vector2(x * itemSlotCellSize, y * itemSlotCellSize);
 
             Image image = itemSlotRectTransform.Find("iconSprite").GetComponent<Image>();
@@ -58,7 +60,8 @@ public class UI_Inventory : MonoBehaviour
             if (item.GetItemAmount() > 1)
             {
                 uiText.SetText(item.GetItemAmount().ToString());
-            } else
+            }
+            else
             {
                 uiText.SetText("");
             }
@@ -70,5 +73,12 @@ public class UI_Inventory : MonoBehaviour
                 y++;
             }
         }
+    }
+
+    private void AddItemToInventoryUI(Item item, float itemSlotCellSize, int x, int y)
+    {
+
+        
+
     }
 }

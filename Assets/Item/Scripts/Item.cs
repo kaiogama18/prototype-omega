@@ -19,18 +19,18 @@ public class Item: MonoBehaviour
         special
     }
 
-    [SerializeField] private int itemID;
+    [SerializeField, HideInInspector] private int itemID;
     public string itemName;
     [SerializeField] private Sprite itemSprite;
     public ItemType itemType;
-    public ItemRarity rarity;
+    public ItemRarity itemRarity;
     private int itemAmount = 0;
 
     //[SerializeField] private float itemLifetime = 100f;
     private float blinkDuration = 5f;
     private bool isBlinking = false;
 
-    [SerializeField] private float rotationSpeed = 100f;
+    [SerializeField, HideInInspector] private float rotationSpeed = 100f;
 
     public bool IsStackable()
     {

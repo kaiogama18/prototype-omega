@@ -440,9 +440,7 @@ MonoBehaviour:
   itemName: Peixe Dourado
   itemSprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   itemType: 0
-  rarity: 1
-  itemAmount: 0
-  itemLifetime: 100
+  rarity: 0
   rotationSpeed: 100
 --- !u!1 &7827263726893688555
 GameObject:
