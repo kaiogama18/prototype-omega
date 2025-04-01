@@ -1,34 +1,18 @@
-.button {
-    background-color: rgb(217, 217, 217);
-    width: 42px;
-    height: 42px;
-}
-
 .panel {
     background-color: rgb(176, 176, 176);
     width: 100%;
     height: 100%;
-    opacity: 1;
     display: flex;
-    margin-top: 0;
-    margin-right: 0;
-    margin-bottom: 0;
-    margin-left: 0;
     padding-top: 12px;
     padding-right: 20px;
     padding-bottom: 20px;
     padding-left: 84px;
 }
 
-.panel__container {
-    flex-shrink: 0;
-    flex-grow: 1;
-}
-
-.vertical-container {
+.vertical__container {
     flex-direction: row;
-    height: 80%;
     flex-shrink: 0;
+    flex-grow: 0;
 }
 
 .inventory__nanme__label {
@@ -42,20 +26,40 @@
     flex-grow: 0;
 }
 
-.inventory__container {
-    flex-shrink: 0;
-}
-
 .inventory {
     background-color: rgb(255, 255, 255);
     height: 88%;
     flex-shrink: 0;
 }
 
-.inventory__btns {
-    background-color: rgb(217, 217, 217);
-    height: 20%;
+.buttons {
+    background-color: rgb(235, 235, 235);
+    height: 32px;
     margin-top: 8px;
-    flex-shrink: 1;
-    flex-grow: 1;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-self: auto;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+.button__icon {
+    background-color: rgb(217, 217, 217);
+    width: 42px;
+    height: 42px;
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+}
+
+.button {
+    background-color: rgb(217, 217, 217);
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    color: rgb(0, 0, 0);
+    font-size: 12px;
 }
