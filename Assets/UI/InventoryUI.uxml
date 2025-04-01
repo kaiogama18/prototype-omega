@@ -1,0 +1,25 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/inventory-ui.uss?fileID=7433441132597879392&amp;guid=baeec2a608107f54398ebe9373d5369c&amp;type=3#inventory-ui" />
+    <ui:VisualElement name="Panel" class="panel" style="flex-grow: 1;">
+        <ui:VisualElement name="verticalGrid" class="vertical-container" style="flex-grow: 1;">
+            <ui:VisualElement name="Panel" class="panel__container" style="flex-grow: 1;">
+                <ui:VisualElement name="verticalContainer" class="vertical-container" style="flex-grow: 1; flex-basis: 265px; flex-direction: row; flex-wrap: nowrap;">
+                    <ui:VisualElement name="BackpackContainer" class="inventory__container" style="flex-grow: 1; align-items: stretch; margin-right: 16px;">
+                        <ui:VisualElement name="NamelLabel" class="inventory__nanme__label" style="flex-grow: 1;">
+                            <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="Inventory" class="inventory" style="flex-grow: 1;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="StorageContainer" class="inventory__container" style="flex-grow: 1; margin-left: 16px;">
+                        <ui:VisualElement name="NamelLabel" class="inventory__nanme__label" style="flex-grow: 1;">
+                            <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="Inventory" class="inventory" style="flex-grow: 1;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="InventoryBtns" class="inventory__btns" style="flex-grow: 1;" />
+            </ui:VisualElement>
+            <ui:Button text="Button" parse-escape-sequences="true" display-tooltip-when-elided="true" class="button" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
