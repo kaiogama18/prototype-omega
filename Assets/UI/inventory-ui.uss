@@ -7,6 +7,7 @@
     padding-right: 20px;
     padding-bottom: 20px;
     padding-left: 84px;
+    opacity: 1;
 }
 
 .vertical__container {
@@ -15,7 +16,7 @@
     flex-grow: 0;
 }
 
-.inventory__nanme__label {
+.namelabel {
     background-color: rgb(217, 217, 217);
     width: 68px;
     height: 42px;
@@ -32,7 +33,7 @@
     flex-shrink: 0;
 }
 
-.buttons {
+.menu {
     background-color: rgb(235, 235, 235);
     height: 32px;
     margin-top: 8px;
@@ -44,16 +45,6 @@
     padding-bottom: 4px;
 }
 
-.button__icon {
-    background-color: rgb(217, 217, 217);
-    width: 42px;
-    height: 42px;
-    border-top-width: 0;
-    border-right-width: 0;
-    border-bottom-width: 0;
-    border-left-width: 0;
-}
-
 .button {
     background-color: rgb(217, 217, 217);
     border-top-width: 0;
@@ -62,4 +53,14 @@
     border-left-width: 0;
     color: rgb(0, 0, 0);
     font-size: 12px;
+}
+
+.button__icon {
+    background-color: rgb(217, 217, 217);
+    width: 42px;
+    height: 42px;
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
 }
