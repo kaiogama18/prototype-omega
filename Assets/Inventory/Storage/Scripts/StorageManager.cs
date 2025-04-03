@@ -22,7 +22,8 @@ public class StorageManager : MonoBehaviour, IInteractable
     }
     private void OnDisable()
     {
-        btnClose.UnregisterCallback<ClickEvent>(OnClose);
+        if(btnClose != null)
+            btnClose.UnregisterCallback<ClickEvent>(OnClose);
     }
 
     public void OnClose(ClickEvent evt)

@@ -5,49 +5,46 @@ using static UnityEditor.Timeline.Actions.MenuPriority;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] private GameInput gameInput;
     [SerializeField] private UI_Inventory uiInventory;
+    [SerializeField] private CharacterController controller;
     
+    [SerializeField] private float moveSpeed = 7f;
+    //[SerializeField] private float rotateSpeed = 10f;
     
-    public float speed = 5f;
-    public CharacterController controller;
-    public Animator animations;
-
-    public float rotationPower = 1f;
-    public float interactionRange = 3f;
     private IInteractable currentInteractable = null;
+
+    private bool isWalking;
+
 
     void Update()
     {
         #region Player Movement
 
-        float side = Input.GetAxis("Horizontal");
-        float forward = Input.GetAxis("Vertical");
+        Vector2 inputVector = gameInput.GetMovementVectorNormalized();
+        Vector3 moveDir = new Vector3(inputVector.x, 0f, inputVector.y);
         
-        Vector3 walk = transform.forward * forward + transform.right * side;
+        controller.Move(moveDir * moveSpeed * Time.deltaTime); //transform.position += moveDir * moveSpeed * Time.deltaTime;
 
-        controller.Move(speed * Time.deltaTime * walk);
-
-
-        if( forward != 0 || side !=0 )
-        {
-            animations.SetBool("IsRunning", true);
-        }
-        else
-        {
-            animations.SetBool("IsRunning", false);
-        }
+        isWalking = moveDir != Vector3.zero;
+        //transform.forward = Vector3.Slerp(transform.forward, moveDir, Time.deltaTime * rotateSpeed);
 
         #endregion
 
         #region Player Interact
-        
-        if(Input.GetKeyDown(KeyCode.E) && currentInteractable != null)
+
+        if (Input.GetKeyDown(KeyCode.E) && currentInteractable != null)
         {
             currentInteractable.Interact();
         }
 
         #endregion
 
+    }
+
+    public bool IsWalking()
+    {
+        return isWalking;
     }
 
     private void OnTriggerEnter(Collider other)
