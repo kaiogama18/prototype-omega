@@ -663,7 +663,7 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
@@ -1888,10 +1888,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_NoiseProfile: {fileID: 11400000, guid: 46965f9cbaf525742a6da4c2172a99cd, type: 2}
+  m_NoiseProfile: {fileID: 11400000, guid: 20e46be82478fa24b90f748044c06b4b, type: 2}
   m_PivotOffset: {x: 0, y: 0, z: 0}
-  m_AmplitudeGain: 1
-  m_FrequencyGain: 1
+  m_AmplitudeGain: 0.05
+  m_FrequencyGain: 0.05
   mNoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1 &1475019216
 GameObject:
@@ -2407,6 +2407,10 @@ PrefabInstance:
       propertyPath: uiInventory
       value: 
       objectReference: {fileID: 1323738871}
+    - target: {fileID: 4404116065530907744, guid: 8365b000ead3c8f4d882915e64571afb, type: 3}
+      propertyPath: InteractiveLayerMask.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 5376514329959818719, guid: 8365b000ead3c8f4d882915e64571afb, type: 3}
       propertyPath: m_Name
       value: Player_Character
@@ -2562,6 +2566,10 @@ PrefabInstance:
       propertyPath: _storageUI
       value: 
       objectReference: {fileID: 1165611525}
+    - target: {fileID: 5022590009797738551, guid: bc6caa51c4697e2449cce5082068bd4f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8697338431818678878, guid: bc6caa51c4697e2449cce5082068bd4f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.2
