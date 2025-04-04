@@ -9,7 +9,7 @@ using static UnityEditor.Progress;
 public class UI_Inventory : MonoBehaviour
 {
     [SerializeField] private Inventory inventory;
-    [SerializeField] private SO_Inventory soInventory;
+    [SerializeField] private InventorySO soInventory;
     private Transform itemSlotContainer;
     private Transform itemSlotTemplate;
 

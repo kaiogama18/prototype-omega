@@ -152,3 +152,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 70c019dbe437d0a408e105fd968ee5dc, type: 2}
   gameObj: {fileID: 112658919625912642}
+  playerLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
+  moveToPlayerDuration: 0.25
+  lifeTime: 10

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5675657684777355114}
   - component: {fileID: 1990592789026756686}
   - component: {fileID: 4404116065530907744}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player_Character
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76,6 +76,9 @@ MonoBehaviour:
   gameInput: {fileID: 0}
   uiInventory: {fileID: 0}
   controller: {fileID: 1990592789026756686}
+  InteractiveLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
   moveSpeed: 7
 --- !u!1 &9080821926823461296
 GameObject:

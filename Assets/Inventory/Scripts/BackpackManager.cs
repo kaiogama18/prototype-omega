@@ -1,52 +1,37 @@
-using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class BackpackManager : Inventory
 {
-    [SerializeField] private Player player;
+    // Nova UI Manager
+    //public  IEnumerator InitializeView(int size = 20);
+    //private List<VisualElement> child;
 
-    [SerializeField] private float moveToPlayerDuration = 0.25f;
+    //public override void UpdateUIInventory()
+    //{
+    //    root = inventoryUI.rootVisualElement;
+    //    if (inventoryUI != null)
+    //    {
+    //        slotContainer = root.Q("SlotContainer");
+    //    }
 
-    private Vector3 playerPosition;
+    //    slotContainer.Clear();
 
-    private void OnEnable()
-    {
-        Actions.AddItemToBackpack += MoveItemToPlayer; 
-    }
 
-    private void OnDisable()
-    {
-        Actions.AddItemToBackpack -= MoveItemToPlayer;  
-    }
-    
-    private void Update()
-    {
-        playerPosition = player.transform.position;
-    }
-    
-    public void MoveItemToPlayer(Drop drop)
-    {
-        StartCoroutine(AnimMoveItemToPlayer(drop));
-    }
 
-    IEnumerator AnimMoveItemToPlayer(Drop drop)
-    {
-        Vector3 startPosition = drop.transform.position;
+    //    child = new List<VisualElement>(size);
+    //    Debug.Log("sada");
+    //    slotContainer = root.Q("SlotContainer");
 
-        float timeElapsed = 0f;
+    //    slotContainer = inventoryUI.rootVisualElement.Q("SlotContainer") as VisualElement;
+    //    slotContainer = inventoryUI.rootVisualElement.Q("BtnClose");
 
-        while (timeElapsed < moveToPlayerDuration && drop != null)
-        {
-            drop.transform.position = Vector3.Lerp(startPosition,
-                new Vector3(playerPosition.x, 1f, playerPosition.z), 
-                timeElapsed / moveToPlayerDuration);
-            
-            timeElapsed += Time.deltaTime;
-            yield return null;
-        }
 
-        drop.transform.position = new Vector3(playerPosition.x, 1f, playerPosition.z);
-
-        AddItemToInventory(drop);
-    }
+    //    for (int i = 0; i < size; i++)
+    //    {
+    //        slotContainer.Add(child[i]);
+    //    }
+    //}
 }

@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         gameInput.OnInteractAction += GameInput_OnInteractAction;
+        gameInput.OnInventoryAction += GameInput_OnInventoryAction; ;
     }
     
     private void Update()
@@ -70,11 +71,6 @@ public class Player : MonoBehaviour
 
     private void HandleInteractions()
     {
-        //if (Input.GetKeyDown(KeyCode.E) && currentInteractable != null)
-        //{
-        //    currentInteractable.Interact();
-        //}
-
         Vector2 inputVector = gameInput.GetMovementVectorNormalized();
         Vector3 moveDir = new Vector3(inputVector.x, 0f, inputVector.y);
 
@@ -88,7 +84,6 @@ public class Player : MonoBehaviour
         {
             if (raycastHit.transform.TryGetComponent(out IInteractable interactable))
             {
-                //interactable.Interact();
                 interacted = interactable;
             }
         }
@@ -104,4 +99,10 @@ public class Player : MonoBehaviour
     {
         interacted.Interact();
     }
+
+    private void GameInput_OnInventoryAction(object sender, System.EventArgs e)
+    {
+        Actions.OpenInventoryUI();
+    }
+
 }

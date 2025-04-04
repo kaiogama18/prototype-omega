@@ -5,12 +5,17 @@ using UnityEngine;
 
 public class Drop : MonoBehaviour
 {
-
     public Item item;
-
+    
     [SerializeField] private GameObject gameObj;
+    [SerializeField] private LayerMask playerLayerMask;
+    [SerializeField] private float moveToPlayerDuration = 0.25f;
+    [SerializeField] private float lifeTime = 100f;
+
     private MeshFilter staticMesh;
-    private float lifeTime = 10f; 
+    private Vector3 playerPosition;
+
+
     void Start()
     {
         gameObj.SetActive(true);
@@ -24,11 +29,34 @@ public class Drop : MonoBehaviour
         Destroy(this.gameObject, lifeTime);
     }
 
+    private void MoveToPlayer()
+    {
+        StartCoroutine(AnimMoveItemToPlayer());
+    }
+
+    IEnumerator AnimMoveItemToPlayer()
+    {
+        Vector3 startPosition = transform.position;
+        float timeElapsed = 0f;
+        while (timeElapsed < moveToPlayerDuration)
+        {
+            transform.position = Vector3.Lerp(startPosition,
+                new Vector3(playerPosition.x, 1f, playerPosition.z),
+                timeElapsed / moveToPlayerDuration);
+
+            timeElapsed += Time.deltaTime;
+            yield return null;
+        }
+        Actions.AddItemToInventory(this);
+    }
+
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if(other.transform.TryGetComponent(out Player player))
         {
-            Actions.AddItemToBackpack(this);
+            playerPosition = player.transform.position;
+            MoveToPlayer();
         }
     }
 

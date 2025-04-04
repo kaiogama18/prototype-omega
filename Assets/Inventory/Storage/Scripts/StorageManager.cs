@@ -16,7 +16,7 @@ public class StorageManager : MonoBehaviour, IInteractable
         }
         
         storageUI.transform.gameObject.SetActive(true);
-
+        
         btnClose = storageUI.rootVisualElement.Q("BtnClose") as Button;
         btnClose.RegisterCallback<ClickEvent>(OnClose);
     }

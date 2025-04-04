@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 using System.Linq;
 
 [CreateAssetMenu(fileName = "New Inventory", menuName = "Inventory")]
-public class SO_Inventory : ScriptableObject
+public class InventorySO : ScriptableObject
 {
     public new string name;
     public int maxItensByLevel = 6;
@@ -14,7 +14,7 @@ public class SO_Inventory : ScriptableObject
     public int levelInventory = 1;
 
     [SerializeField]
-    public List<SerializableDictionaryEntry<Item, int>> inventory; 
+    public List<SerializableDictionaryEntry<Item, int>> inventory;
 
     public void ClearDictionary()
     {
